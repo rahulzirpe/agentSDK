@@ -96,17 +96,17 @@ function sendQuickReplies(conversationId, quickReplies) {
       text: "Select Time Slots:",
       quickReplies: {
         "type": "quickReplies",
-        "itemsPerRow": 8,
+        "itemsPerRow": 3,
         "replies": [
           {
             "type": "button",
-            "tooltip": "yes I do",
-            "title": "yes",
+            "tooltip": "{quickReply1}",
+            "title": "{quickReply1}",
             "click": {
               "actions": [
                 {
                   "type": "publishText",
-                  "text": "yep"
+                  "text": "{quickReply1}"
                 }
               ],
               "metadata": [
