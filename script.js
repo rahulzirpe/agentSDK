@@ -89,7 +89,7 @@ function sendQuickReplies(conversationId, quickReplies) {
     };
 
     var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
-    const quickReply1 = document.getElementById('quickReply1').value;
+    var quickReply1 = document.getElementById('quickReply1').value;
     console.log(quickReply1);
     
     var data = {
@@ -100,13 +100,13 @@ function sendQuickReplies(conversationId, quickReplies) {
         "replies": [
           {
             "type": "button",
-            "tooltip": {{quickReply1}},
-            "title": {{quickReply1}},
+            "tooltip": "{{quickReply1}}",
+            "title": "{{quickReply1}}",
             "click": {
               "actions": [
                 {
                   "type": "publishText",
-                  "text": {{quickReply1}}
+                  "text": "{{quickReply1}}"
                 }
               ],
               "metadata": [
