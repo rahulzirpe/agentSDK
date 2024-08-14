@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Quick Replies</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Agent Quick Replies</h1>
+        <label for="conversationId">Conversation ID:</label>
+        <input type="text" id="conversationId" placeholder="Enter Conversation ID">
+
+        <label for="numQuickReplies">Number of Quick Replies:</label>
+        <input type="number" id="numQuickReplies" placeholder="Enter number of quick replies" min="1" max="10">
+
+        <button id="generateButton">Generate Quick Replies</button>
+
+        <div id="quickRepliesContainer"></div>
+
+        <button id="sendButton" style="display:none;">Send Quick Replies</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/liveperson-agent-sdk/dist/liveperson-agent-sdk.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
