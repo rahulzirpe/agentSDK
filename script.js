@@ -69,10 +69,14 @@ function sendQuickReplies(conversationId, quickReplies) {
         };
 
         // Use the lpTag.agentSDK.cmdNames.writeSC command
-        lpTag.agentSDK.cmdNames.writeSC({
+        var cmdName = lpTag.agentSDK.cmdNames.writeSC;
+
+        lpTag.agentSDK.command(cmdName, message);
+
+        /*lpTag.agentSDK.cmdNames.writeSC({
             payload: message,
             conversationId: conversationId // Specifies which conversation to send the message to
-        });
+        });*/
 
         alert('Quick replies sent successfully!');
     } catch (error) {
