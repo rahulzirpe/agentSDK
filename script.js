@@ -38,51 +38,1243 @@ document.getElementById('generateButton').addEventListener('click', function () 
 
 document.getElementById('sendButton').addEventListener('click', function () {
     const numQuickReplies = document.getElementById('numQuickReplies').value;
-    const quickReplies = [];
 
-    for (let i = 1; i <= numQuickReplies; i++) {
-        const text = document.getElementById(`quickReply${i}`).value;
-        if (text) {
-            quickReplies.push({
-                "type": "button",
-                "tooltip": text, // Using the text as tooltip for simplicity
-                "title": text,
-                "click": {
-                    "actions": [
+    if (numQuickReplies > 0 && numQuickReplies <= 10) {
+        let message;
+
+        if (numQuickReplies == 1) {
+            const quickReply1 = document.getElementById('quickReply1').value;
+
+            message = {
+                text: "Please choose an option:",
+                quickReplies: {
+                    "type": "quickReplies",
+                    "itemsPerRow": 1,
+                    "replies": [
                         {
-                            "type": "publishText",
-                            "text": text // Publishing the same text as quick reply
-                        }
-                    ],
-                    "metadata": [
-                        {
-                            "type": "ExternalId",
-                            "id": `quick_reply_${i}` // Unique ID using the index
+                            "type": "button",
+                            "tooltip": quickReply1,
+                            "title": quickReply1,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply1
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_1"
+                                    }
+                                ]
+                            }
                         }
                     ]
                 }
-            });
+            };
         }
+
+        if (numQuickReplies == 2) {
+            const quickReply1 = document.getElementById('quickReply1').value;
+            const quickReply2 = document.getElementById('quickReply2').value;
+
+            message = {
+                text: "Please choose an option:",
+                quickReplies: {
+                    "type": "quickReplies",
+                    "itemsPerRow": 2,
+                    "replies": [
+                        {
+                            "type": "button",
+                            "tooltip": quickReply1,
+                            "title": quickReply1,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply1
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_1"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply2,
+                            "title": quickReply2,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply2
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_2"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            };
+        }
+
+        if (numQuickReplies == 3) {
+            const quickReply1 = document.getElementById('quickReply1').value;
+            const quickReply2 = document.getElementById('quickReply2').value;
+            const quickReply3 = document.getElementById('quickReply3').value;
+
+            message = {
+                text: "Please choose an option:",
+                quickReplies: {
+                    "type": "quickReplies",
+                    "itemsPerRow": 3,
+                    "replies": [
+                        {
+                            "type": "button",
+                            "tooltip": quickReply1,
+                            "title": quickReply1,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply1
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_1"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply2,
+                            "title": quickReply2,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply2
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_2"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply3,
+                            "title": quickReply3,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply3
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_3"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            };
+        }
+
+        if (numQuickReplies == 4) {
+            const quickReply1 = document.getElementById('quickReply1').value;
+            const quickReply2 = document.getElementById('quickReply2').value;
+            const quickReply3 = document.getElementById('quickReply3').value;
+            const quickReply4 = document.getElementById('quickReply4').value;
+
+            message = {
+                text: "Please choose an option:",
+                quickReplies: {
+                    "type": "quickReplies",
+                    "itemsPerRow": 4,
+                    "replies": [
+                        {
+                            "type": "button",
+                            "tooltip": quickReply1,
+                            "title": quickReply1,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply1
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_1"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply2,
+                            "title": quickReply2,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply2
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_2"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply3,
+                            "title": quickReply3,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply3
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_3"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply4,
+                            "title": quickReply4,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply4
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_4"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            };
+        }
+
+        if (numQuickReplies == 5) {
+            const quickReply1 = document.getElementById('quickReply1').value;
+            const quickReply2 = document.getElementById('quickReply2').value;
+            const quickReply3 = document.getElementById('quickReply3').value;
+            const quickReply4 = document.getElementById('quickReply4').value;
+            const quickReply5 = document.getElementById('quickReply5').value;
+
+            message = {
+                text: "Please choose an option:",
+                quickReplies: {
+                    "type": "quickReplies",
+                    "itemsPerRow": 5,
+                    "replies": [
+                        {
+                            "type": "button",
+                            "tooltip": quickReply1,
+                            "title": quickReply1,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply1
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_1"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply2,
+                            "title": quickReply2,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply2
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_2"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply3,
+                            "title": quickReply3,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply3
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_3"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply4,
+                            "title": quickReply4,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply4
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_4"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply5,
+                            "title": quickReply5,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply5
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_5"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            };
+        }
+
+        if (numQuickReplies == 6) {
+            const quickReply1 = document.getElementById('quickReply1').value;
+            const quickReply2 = document.getElementById('quickReply2').value;
+            const quickReply3 = document.getElementById('quickReply3').value;
+            const quickReply4 = document.getElementById('quickReply4').value;
+            const quickReply5 = document.getElementById('quickReply5').value;
+            const quickReply6 = document.getElementById('quickReply6').value;
+
+            message = {
+                text: "Please choose an option:",
+                quickReplies: {
+                    "type": "quickReplies",
+                    "itemsPerRow": 6,
+                    "replies": [
+                        {
+                            "type": "button",
+                            "tooltip": quickReply1,
+                            "title": quickReply1,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply1
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_1"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply2,
+                            "title": quickReply2,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply2
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_2"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply3,
+                            "title": quickReply3,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply3
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_3"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply4,
+                            "title": quickReply4,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply4
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_4"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply5,
+                            "title": quickReply5,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply5
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_5"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply6,
+                            "title": quickReply6,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply6
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_6"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            };
+        }
+
+        if (numQuickReplies == 7) {
+            const quickReply1 = document.getElementById('quickReply1').value;
+            const quickReply2 = document.getElementById('quickReply2').value;
+            const quickReply3 = document.getElementById('quickReply3').value;
+            const quickReply4 = document.getElementById('quickReply4').value;
+            const quickReply5 = document.getElementById('quickReply5').value;
+            const quickReply6 = document.getElementById('quickReply6').value;
+            const quickReply7 = document.getElementById('quickReply7').value;
+
+            message = {
+                text: "Please choose an option:",
+                quickReplies: {
+                    "type": "quickReplies",
+                    "itemsPerRow": 7,
+                    "replies": [
+                        {
+                            "type": "button",
+                            "tooltip": quickReply1,
+                            "title": quickReply1,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply1
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_1"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply2,
+                            "title": quickReply2,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply2
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_2"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply3,
+                            "title": quickReply3,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply3
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_3"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply4,
+                            "title": quickReply4,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply4
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_4"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply5,
+                            "title": quickReply5,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply5
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_5"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply6,
+                            "title": quickReply6,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply6
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_6"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply7,
+                            "title": quickReply7,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply7
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_7"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            };
+        }
+
+        if (numQuickReplies == 8) {
+            const quickReply1 = document.getElementById('quickReply1').value;
+            const quickReply2 = document.getElementById('quickReply2').value;
+            const quickReply3 = document.getElementById('quickReply3').value;
+            const quickReply4 = document.getElementById('quickReply4').value;
+            const quickReply5 = document.getElementById('quickReply5').value;
+            const quickReply6 = document.getElementById('quickReply6').value;
+            const quickReply7 = document.getElementById('quickReply7').value;
+            const quickReply8 = document.getElementById('quickReply8').value;
+
+            message = {
+                text: "Please choose an option:",
+                quickReplies: {
+                    "type": "quickReplies",
+                    "itemsPerRow": 8,
+                    "replies": [
+                        {
+                            "type": "button",
+                            "tooltip": quickReply1,
+                            "title": quickReply1,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply1
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_1"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply2,
+                            "title": quickReply2,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply2
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_2"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply3,
+                            "title": quickReply3,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply3
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_3"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply4,
+                            "title": quickReply4,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply4
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_4"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply5,
+                            "title": quickReply5,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply5
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_5"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply6,
+                            "title": quickReply6,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply6
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_6"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply7,
+                            "title": quickReply7,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply7
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_7"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply8,
+                            "title": quickReply8,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply8
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_8"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            };
+        }
+
+        if (numQuickReplies == 9) {
+            const quickReply1 = document.getElementById('quickReply1').value;
+            const quickReply2 = document.getElementById('quickReply2').value;
+            const quickReply3 = document.getElementById('quickReply3').value;
+            const quickReply4 = document.getElementById('quickReply4').value;
+            const quickReply5 = document.getElementById('quickReply5').value;
+            const quickReply6 = document.getElementById('quickReply6').value;
+            const quickReply7 = document.getElementById('quickReply7').value;
+            const quickReply8 = document.getElementById('quickReply8').value;
+            const quickReply9 = document.getElementById('quickReply9').value;
+
+            message = {
+                text: "Please choose an option:",
+                quickReplies: {
+                    "type": "quickReplies",
+                    "itemsPerRow": 9,
+                    "replies": [
+                        {
+                            "type": "button",
+                            "tooltip": quickReply1,
+                            "title": quickReply1,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply1
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_1"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply2,
+                            "title": quickReply2,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply2
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_2"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply3,
+                            "title": quickReply3,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply3
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_3"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply4,
+                            "title": quickReply4,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply4
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_4"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply5,
+                            "title": quickReply5,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply5
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_5"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply6,
+                            "title": quickReply6,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply6
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_6"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply7,
+                            "title": quickReply7,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply7
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_7"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply8,
+                            "title": quickReply8,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply8
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_8"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply9,
+                            "title": quickReply9,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply9
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_9"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            };
+        }
+
+        if (numQuickReplies == 10) {
+            const quickReply1 = document.getElementById('quickReply1').value;
+            const quickReply2 = document.getElementById('quickReply2').value;
+            const quickReply3 = document.getElementById('quickReply3').value;
+            const quickReply4 = document.getElementById('quickReply4').value;
+            const quickReply5 = document.getElementById('quickReply5').value;
+            const quickReply6 = document.getElementById('quickReply6').value;
+            const quickReply7 = document.getElementById('quickReply7').value;
+            const quickReply8 = document.getElementById('quickReply8').value;
+            const quickReply9 = document.getElementById('quickReply9').value;
+            const quickReply10 = document.getElementById('quickReply10').value;
+
+            message = {
+                text: "Please choose an option:",
+                quickReplies: {
+                    "type": "quickReplies",
+                    "itemsPerRow": 10,
+                    "replies": [
+                        {
+                            "type": "button",
+                            "tooltip": quickReply1,
+                            "title": quickReply1,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply1
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_1"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply2,
+                            "title": quickReply2,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply2
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_2"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply3,
+                            "title": quickReply3,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply3
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_3"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply4,
+                            "title": quickReply4,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply4
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_4"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply5,
+                            "title": quickReply5,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply5
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_5"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply6,
+                            "title": quickReply6,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply6
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_6"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply7,
+                            "title": quickReply7,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply7
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_7"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply8,
+                            "title": quickReply8,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply8
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_8"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply9,
+                            "title": quickReply9,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply9
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_9"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply10,
+                            "title": quickReply10,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply10
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "quick_reply_10"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            };
+        }
+
+        
     }
 
-    if (quickReplies.length > 0) {
-        sendQuickReplies(quickReplies);
-    } else {
-        alert('Please enter at least one quick reply.');
-    }
-});
-
-function sendQuickReplies(quickReplies) {
-    try {
-        // Using the format of the data variable to construct the message
-        var message = {
-            text: "Please select below time slots:",
-            quickReplies: {
-                "type": "quickReplies",
-                "itemsPerRow": 3,
-                "replies": quickReplies
-            }
-        };
 
         var notifyWhenDone = function (err) {
             if (err) {
