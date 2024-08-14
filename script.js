@@ -69,14 +69,75 @@ function sendQuickReplies(conversationId, quickReplies) {
         };
 
         // Use the lpTag.agentSDK.cmdNames.writeSC command
-        var cmdName = lpTag.agentSDK.cmdNames.writeSC;
+        //var cmdName = lpTag.agentSDK.cmdNames.writeSC;
 
-        lpTag.agentSDK.command(cmdName, message);
+        //lpTag.agentSDK.command(cmdName, message);
 
         /*lpTag.agentSDK.cmdNames.writeSC({
             payload: message,
             conversationId: conversationId // Specifies which conversation to send the message to
         });*/
+
+        {
+    var notifyWhenDone = function(err) {
+        if (err) {
+            // Do something with the error
+        }
+        // called when the command is completed successfully,
+        // or when the action terminated with an error.
+    };
+
+    var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
+    var data = {
+      text: "Some text",
+      quickReplies: {
+        "type": "quickReplies",
+        "itemsPerRow": 8,
+        "replies": [
+          {
+            "type": "button",
+            "tooltip": "yes I do",
+            "title": "yes",
+            "click": {
+              "actions": [
+                {
+                  "type": "publishText",
+                  "text": "yep"
+                }
+              ],
+              "metadata": [
+                {
+                  "type": "ExternalId",
+                  "id": "Yes-1234"
+                }
+              ]
+            }
+          },
+          {
+            "type": "button",
+            "tooltip": "No!",
+            "title": "No!",
+            "click": {
+              "actions": [
+                {
+                  "type": "publishText",
+                  "text": "No!"
+                }
+              ],
+              "metadata": [
+                {
+                  "type": "ExternalId",
+                  "id": "No-4321"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    };
+
+    lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
+}
 
         alert('Quick replies sent successfully!');
     } catch (error) {
