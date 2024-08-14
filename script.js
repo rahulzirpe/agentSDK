@@ -100,8 +100,8 @@ function sendQuickReplies(conversationId, quickReplies) {
         "replies": [
           {
             "type": "button",
-            "tooltip": "{{quickReply1}}",
-            "title": "{{quickReply1}}",
+            "tooltip": "quickReply1",
+            "title": "{quickReply1}",
             "click": {
               "actions": [
                 {
