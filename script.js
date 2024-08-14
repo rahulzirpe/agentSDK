@@ -10,9 +10,8 @@ window.lpTag = window.lpTag || {}; lpTag.taglets = lpTag.taglets || {}; lpTag.ag
     }(); e || (b.PostMessageChannel = f); return f
 }); !function (a, b, c) { "use strict"; if ("function" == typeof define && define.amd) define("Chronos.PostMessagePromise", ["exports"], function () { return c(a, b, !0) }); else if ("object" != typeof exports) { b.Chronos = b.Chronos || {}; c(a, b.Chronos) } }(this, "undefined" == typeof window.lpTag ? this : window.lpTag, function (a, b, c) { "use strict"; function d(a) { if (!1 == this instanceof d) return new d(a); this.initialize(a); return void 0 } var e = { RESOLVE: "resolve", REJECT: "reject", PROGRESS: "progress" }; d.prototype = function () { function a(a) { if (!this.initialized) { this.queue = []; this.actions = { resolve: c.bind(this), reject: d.bind(this), progress: f.bind(this) }; "function" == typeof a && a.call(this, this.actions.resolve, this.actions.reject); this.initialized = !0 } } function b(a, b, c) { this.queue.push({ resolve: a, reject: b, progress: c }) } function c(a) { h.call(this, e.RESOLVE, a) } function d(a) { h.call(this, e.REJECT, a) } function f(a) { g.call(this, e.PROGRESS, a) } function g(a, b, c) { var d, e; if (this.queue && this.queue.length) { d = 0; e = this.queue[d++]; for (; e;) { e[a] && e[a].call(this, b); e = this.queue[d++] } c && (this.queue.length = 0) } } function h(a, b) { var c = this.actions[a]; this.then = function () { c && c.call(this, b) }.bind(this); this.resolve = this.reject = function () { throw new Error("This Promise instance had already been completed.") }; this.progress = function () { return !1 }; g.call(this, a, b, !0); if (this.queue) { this.queue.length = 0; delete this.queue } } return { initialize: a, then: b, resolve: c, reject: d, progress: f } }(); d.polyfill = function () { a.Promise || (a.Promise = d) }; c || (b.PostMessagePromise = b.PostMessagePromise || d); return d }); !function (a, b) { "use strict"; if ("function" == typeof define && define.amd) define("Chronos.PostMessageMapper", ["Chronos.PostMessageUtilities"], function (c) { return b(a, a, c, !0) }); else if ("object" != typeof exports) { a.Chronos = a.Chronos || {}; b(a, a.Chronos, a.Chronos.PostMessageUtilities) } }("undefined" == typeof window.lpTag ? this : window.lpTag, function (a, b, c, d) { "use strict"; function e(a) { if (!1 == this instanceof e) return new e(a); this.initialize(a); return void 0 } e.prototype = function () { function a(a) { if (!this.initialized) { this.eventChannel = a; this.initialized = !0 } } function b(a) { if (a) { if (a.error) { c.log("Error on message: " + a.error, "ERROR", "PostMessageMapper"); return function () { return a } } return e.call(this, a) } } function d(a, b) { return { method: { id: a, name: b, args: Array.prototype.slice.call(arguments, 2) } } } function e(a) { var b = a && a.method, d = b && b.name, e = b && b.args, f = this.eventChannel; return function () { if (f && f[d]) return f[d].apply(f, e); c.log("No channel exists", "ERROR", "PostMessageMapper"); return void 0 } } return { initialize: a, toEvent: b, toMessage: d } }(); d || (b.PostMessageMapper = b.PostMessageMapper || e); return e }); !function (a, b, c, d) { "use strict"; if ("function" == typeof define && define.amd) define("Chronos.PostMessageCourier", ["Chronos.PostMessageUtilities", "Chronos.Channels", "cacher", "CircuitBreaker", "Chronos.PostMessageChannel", "Chronos.PostMessagePromise", "Chronos.PostMessageMapper"], function (b, c, e, f, g, h, i) { return d(a, a, b, c, e, f, g, h, i, !0) }); else if ("object" != typeof exports) { a.Chronos = a.Chronos || {}; d(a, a.Chronos, a.Chronos.PostMessageUtilities, a.Chronos.Channels, b.Cacher, c.CircuitBreaker, a.Chronos.PostMessageChannel, a.Chronos.PostMessagePromise, a.Chronos.PostMessageMapper) } }("undefined" == typeof window.lpTag ? this : window.lpTag, "undefined" == typeof window.lpTag ? this : window.lpTag, "undefined" == typeof window.lpTag ? this : window.lpTag, function (a, b, c, d, e, f, g, h, i, j) { "use strict"; function k(a) { if (!1 == this instanceof k) return new k(a); this.initialize(a); return void 0 } var l = "LPMSG_", m = { TRIGGER: "trigger", COMMAND: "command", REQUEST: "request", RETURN: "return" }, n = 3e4, o = 100, p = 3e4, q = 30, r = 10, s = 1e3; k.prototype = function () { function a(a) { if (!this.initialized) { a = a || {}; x.call(this, a); y.call(this, a); z.call(this, a); A.call(this, a); b.call(this, this.eventChannel); this.once = this.eventChannel.once; this.hasFiredEvents = this.eventChannel.hasFiredEvents; this.bind = this.eventChannel.bind; this.register = this.eventChannel.register; this.unbind = this.eventChannel.unbind; this.unregister = this.eventChannel.unregister; this.hasFiredCommands = this.eventChannel.hasFiredCommands; this.comply = this.eventChannel.comply; this.stopComplying = this.eventChannel.stopComplying; this.hasFiredReqres = this.eventChannel.hasFiredReqres; this.reply = this.eventChannel.reply; this.stopReplying = this.eventChannel.stopReplying; this.initialized = !0 } } function b(a) { a && "function" == typeof a.registerProxy && a.registerProxy({ trigger: function () { D.call(this, Array.prototype.slice.apply(arguments), m.TRIGGER) }, context: this }) } function j() { return this.messageChannel } function k() { return this.eventChannel } function t() { if (!this.disposed) { var a = Array.prototype.slice.apply(arguments); (2 !== arguments.length && 4 !== arguments.length || !0 !== arguments[arguments.length - 1]) && this.eventChannel.trigger.apply(this.eventChannel, a); return D.call(this, a, m.TRIGGER) } } function u() { if (!this.disposed) { var a = Array.prototype.slice.apply(arguments); return D.call(this, a, m.COMMAND) } } function v() { if (!this.disposed) { var a = Array.prototype.slice.apply(arguments); return D.call(this, a, m.REQUEST) } } function w() { if (!this.disposed) { this.messageChannel.dispose(); this.messageChannel = void 0; this.eventChannel = void 0; this.mapper = void 0; this.callbackCache = void 0; this.circuit = void 0; this.disposed = !0 } } function x(a) { this.useObjects = !1 === a.useObjects ? a.useObjects : B(); "undefined" == typeof this.useObjects && (this.useObjects = !0); a.useObjects = this.useObjects; if ("function" != typeof a.serialize || "function" != typeof a.deserialize) { if (this.useObjects && c.hasPostMessageObjectsSupport()) { this.serialize = C; this.deserialize = C } else { this.serialize = c.stringify; this.deserialize = JSON.parse } a.serialize = this.serialize; a.deserialize = this.deserialize } else { this.serialize = a.serialize; this.deserialize = a.deserialize } } function y(a) { var b, c; this.eventChannel = a.eventChannel || new d({ events: a.events, commands: a.commands, reqres: a.reqres }); this.mapper = new i(this.eventChannel); b = this.mapper.toEvent.bind(this.mapper); c = L(b).bind(this); this.messageChannel = new g(a, c) } function z(a) { this.callbackCache = new e({ max: c.parseNumber(a.maxConcurrency, o), ttl: c.parseNumber(a.timeout, n), interval: s }) } function A(a) { var b = c.parseNumber(a.messureTime, p); this.circuit = new f({ timeWindow: b, slidesNumber: Math.ceil(b / 100), tolerance: c.parseNumber(a.messureTolerance, q), calibration: c.parseNumber(a.messureCalibration, r), onopen: c.parseFunction(a.ondisconnect, !0), onclose: c.parseFunction(a.onreconnect, !0) }) } function B() { var a = c.getURLParameter("lpPMDeSerialize"); return "true" === a ? !1 : void 0 } function C(a) { return a } function D(a, b) { return this.circuit.run(function (c, d, e) { var f = F.call(this, a, b, e); if (f) try { var g = this.messageChannel.postMessage.call(this.messageChannel, f); !1 === g ? d() : c() } catch (h) { d() } else d() }.bind(this)) } function E(a, b) { return this.circuit.run(function (c, d) { try { var e = this.messageChannel.postMessage.call(this.messageChannel, a, b); !1 === e ? d() : c() } catch (f) { d() } }.bind(this)) } function F(a, b, d) { var e, f, g = c.createUniqueSequence(l + b + c.SEQUENCE_FORMAT); a.unshift(g, b); if (G(b)) { if (1 < a.length && "function" == typeof a[a.length - 1]) e = a.pop(); else if (2 < a.length && !isNaN(a[a.length - 1]) && "function" == typeof a[a.length - 2]) { f = parseInt(a.pop(), 10); e = a.pop() } if (e && !this.callbackCache.set(g, e, f, function (a, b) { d(); H.call(this, a, b) }.bind(this))) return void 0 } return this.mapper.toMessage.apply(this.mapper, a) } function G(a) { return m.REQUEST === a || m.COMMAND === a } function H(a, b) { if (a && "function" == typeof b) try { b.call(null, new Error("Callback: Operation Timeout!")) } catch (d) { c.log("Error while trying to handle the timeout using the callback", "ERROR", "PostMessageCourier") } } function I(a, b) { var d = this.callbackCache.get(a, !0), e = b && b.args; if ("function" == typeof d) { e && e.length && e[0] && "Error" === e[0].type && "string" == typeof e[0].message && (e[0] = new Error(e[0].message)); try { d.apply(null, e) } catch (f) { c.log("Error while trying to handle the returned message from request/command", "ERROR", "PostMessageCourier") } } } function J(a, b, c) { return function (d, e) { var f, g, h = d; d instanceof Error && (h = { type: "Error", message: d.message }); g = [a, m.RETURN, h]; m.REQUEST === b && g.push(e); f = this.mapper.toMessage.apply(this.mapper, g); E.call(this, f, c.source) }.bind(this) } function K(a, b, c, d) { var e, f; if ("undefined" != typeof Promise && c instanceof Promise || c instanceof h) c.then(function (c) { f = [a, m.RETURN, null]; m.REQUEST === b && f.push(c); e = this.mapper.toMessage.apply(this.mapper, f); E.call(this, e, d.source) }.bind(this), function (b) { f = [a, m.RETURN, b]; e = this.mapper.toMessage.apply(this.mapper, f); E.call(this, e, d.source) }.bind(this)); else if (c && c.error) { f = [a, m.RETURN, c]; e = this.mapper.toMessage.apply(this.mapper, f); E.call(this, e, d.source) } else if ("undefined" != typeof c) { f = [a, m.RETURN, null]; m.REQUEST === b && f.push(c); e = this.mapper.toMessage.apply(this.mapper, f); E.call(this, e, d.source) } } function L(a) { return function (b) { var d, e, f, g, h, i, j; if (b) { h = b.method && b.method.id; i = b.method && b.method.name; j = b.method && b.method.args; if (m.RETURN === i) I.call(this, h, b.method); else { try { G(i) && j.length && j.push(J.call(this, h, i, b)); d = a(b); e = d && d() } catch (k) { c.log("Error while trying to invoke the handler on the events channel", "ERROR", "PostMessageCourier"); if (G(i)) { f = [h, m.RETURN, { error: k.toString() }]; g = this.mapper.toMessage.apply(this.mapper, f); E.call(this, g, b.source) } } G(i) && "undefined" != typeof e && K.call(this, h, i, e, b) } } } } return { initialize: a, getMessageChannel: j, getEventChannel: k, trigger: t, publish: t, command: u, request: v, dispose: w } }(); j || (b.PostMessageCourier = b.PostMessageCourier || k); return k });
 
-// Initialize the LivePerson SDK with your credentials
 lpTag.agentSDK.init({
-    //notificationCallback: notificationHandler
+    notificationCallback: notificationHandler
     //accountId: 'your-account-id', // Replace with your LivePerson account ID
     //accessToken: 'your-access-token' // Replace with your LivePerson access token
 });
@@ -38,107 +37,64 @@ document.getElementById('generateButton').addEventListener('click', function () 
 });
 
 document.getElementById('sendButton').addEventListener('click', function () {
-    const conversationId = document.getElementById('conversationId').value;
     const numQuickReplies = document.getElementById('numQuickReplies').value;
     const quickReplies = [];
 
     for (let i = 1; i <= numQuickReplies; i++) {
         const text = document.getElementById(`quickReply${i}`).value;
         if (text) {
-            quickReplies.push({ title: text, payload: `quick_reply_${i}` });
+            quickReplies.push({
+                "type": "button",
+                "tooltip": text, // Using the text as tooltip for simplicity
+                "title": text,
+                "click": {
+                    "actions": [
+                        {
+                            "type": "publishText",
+                            "text": text // Publishing the same text as quick reply
+                        }
+                    ],
+                    "metadata": [
+                        {
+                            "type": "ExternalId",
+                            "id": `quick_reply_${i}` // Unique ID using the index
+                        }
+                    ]
+                }
+            });
         }
     }
 
-    if (conversationId && quickReplies.length > 0) {
-        sendQuickReplies(conversationId, quickReplies);
+    if (quickReplies.length > 0) {
+        sendQuickReplies(quickReplies);
     } else {
-        alert('Please enter a Conversation ID and at least one quick reply.');
+        alert('Please enter at least one quick reply.');
     }
 });
 
-function sendQuickReplies(conversationId, quickReplies) {
+function sendQuickReplies(quickReplies) {
     try {
-        const message = {
-            type: 'structured',
-            structured: {
-                type: 'quick_replies',
-                content: {
-                    text: 'Choose an option:',
-                    quick_replies: quickReplies
-                }
+        // Using the format of the data variable to construct the message
+        var message = {
+            text: "Please select below time slots:",
+            quickReplies: {
+                "type": "quickReplies",
+                "itemsPerRow": 3,
+                "replies": quickReplies
             }
         };
 
-        // Use the lpTag.agentSDK.cmdNames.writeSC command
-        //var cmdName = lpTag.agentSDK.cmdNames.writeSC;
-
-        //lpTag.agentSDK.command(cmdName, message);
-
-        /*lpTag.agentSDK.cmdNames.writeSC({
-            payload: message,
-            conversationId: conversationId // Specifies which conversation to send the message to
-        });*/
-
-        {
-    var notifyWhenDone = function(err) {
-        if (err) {
-            // Do something with the error
-        }
-        // called when the command is completed successfully,
-        // or when the action terminated with an error.
-    };
-
-    var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
-    var data = {
-      text: "Some text",
-      quickReplies: {
-        "type": "quickReplies",
-        "itemsPerRow": 8,
-        "replies": [
-          {
-            "type": "button",
-            "tooltip": "yes I do",
-            "title": "yes",
-            "click": {
-              "actions": [
-                {
-                  "type": "publishText",
-                  "text": "yep"
-                }
-              ],
-              "metadata": [
-                {
-                  "type": "ExternalId",
-                  "id": "Yes-1234"
-                }
-              ]
+        var notifyWhenDone = function (err) {
+            if (err) {
+                console.error('Error sending quick replies:', err);
+            } else {
+                console.log('Quick replies sent successfully!');
             }
-          },
-          {
-            "type": "button",
-            "tooltip": "No!",
-            "title": "No!",
-            "click": {
-              "actions": [
-                {
-                  "type": "publishText",
-                  "text": "No!"
-                }
-              ],
-              "metadata": [
-                {
-                  "type": "ExternalId",
-                  "id": "No-4321"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    };
+        };
 
-    lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
-}
+        var cmdName = lpTag.agentSDK.cmdNames.write; // Using write to send quick replies
+
+        lpTag.agentSDK.command(cmdName, message, notifyWhenDone);
 
         alert('Quick replies sent successfully!');
     } catch (error) {
@@ -146,3 +102,4 @@ function sendQuickReplies(conversationId, quickReplies) {
         alert('Error sending quick replies.');
     }
 }
+
