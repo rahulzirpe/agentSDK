@@ -89,6 +89,9 @@ function sendQuickReplies(conversationId, quickReplies) {
     };
 
     var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
+    const quickReply1 = document.getElementById('quickReply1').value;
+    console.log(quickReply1);
+    
     var data = {
       text: "Select Time Slots:",
       quickReplies: {
