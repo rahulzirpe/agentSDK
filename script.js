@@ -90,7 +90,7 @@ function sendQuickReplies(conversationId, quickReplies) {
 
     var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
     var data = {
-      text: "Some text",
+      text: "Select Time Slots:",
       quickReplies: {
         "type": "quickReplies",
         "itemsPerRow": 8,
