@@ -89,50 +89,46 @@ function sendQuickReplies(conversationId, quickReplies) {
     };
 
     var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
-    
-     if (numQuickReplies == 2) {
-     const quickReply1 = document.getElementById('quickReply1').value;
-     const quickReply2 = document.getElementById('quickReply2').value;       
     var data = {
-      text: "Please select Preferrable time slots:",
+      text: "Some text",
       quickReplies: {
         "type": "quickReplies",
-        "itemsPerRow": 3,
+        "itemsPerRow": 8,
         "replies": [
           {
             "type": "button",
-            "tooltip": quickReply1,
-            "title": quickReply1,
+            "tooltip": "yes I do",
+            "title": "yes",
             "click": {
               "actions": [
                 {
                   "type": "publishText",
-                  "text": quickReply1
+                  "text": "yep"
                 }
               ],
               "metadata": [
                 {
                   "type": "ExternalId",
-                  "id": "quick_reply_1"
+                  "id": "Yes-1234"
                 }
               ]
             }
           },
           {
             "type": "button",
-            "tooltip": quickReply2,
-            "title": quickReply2,
+            "tooltip": "No!",
+            "title": "No!",
             "click": {
               "actions": [
                 {
                   "type": "publishText",
-                  "text": quickReply2
+                  "text": "No!"
                 }
               ],
               "metadata": [
                 {
                   "type": "ExternalId",
-                  "id": "quick_reply_2"
+                  "id": "No-4321"
                 }
               ]
             }
@@ -144,7 +140,7 @@ function sendQuickReplies(conversationId, quickReplies) {
     lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
 }
 
-        alert('Quick replies sent successfully!');
+        //alert('Quick replies sent successfully!');
     } catch (error) {
         console.error('Error sending quick replies:', error);
         alert('Error sending quick replies.');
