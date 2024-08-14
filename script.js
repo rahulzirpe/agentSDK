@@ -12,7 +12,7 @@ window.lpTag = window.lpTag || {}; lpTag.taglets = lpTag.taglets || {}; lpTag.ag
 
 // Initialize the LivePerson SDK with your credentials
 lpTag.agentSDK.init({
-    notificationCallback: notificationHandler
+    //notificationCallback: notificationHandler
     //accountId: 'your-account-id', // Replace with your LivePerson account ID
     //accessToken: 'your-access-token' // Replace with your LivePerson access token
 });
@@ -88,7 +88,7 @@ function sendQuickReplies(conversationId, quickReplies) {
         // or when the action terminated with an error.
     };
 
-    var cmdName = lpTag.agentSDK.cmdNames.writeSC; // = "Write ChatLine"
+    var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
     var data = {
       text: "Some text",
       quickReplies: {
@@ -137,7 +137,7 @@ function sendQuickReplies(conversationId, quickReplies) {
       }
     };
 
-    lpTag.agentSDK.command(cmdName, message, notifyWhenDone);
+    lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
 }
 
         alert('Quick replies sent successfully!');
