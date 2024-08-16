@@ -76,7 +76,7 @@ function sendQuickReplies(quickReplies) {
         // var quickReply4 = document.getElementById('quickReply4').value;
         // var quickReply5 = document.getElementById('quickReply5').value;
 
-        if (numQuickReplies == 2) {
+        if (numQuickReplies=="2") {
             var cmdName = lpTag.agentSDK.cmdNames.write;
             var quickReply1 = document.getElementById('quickReply1').value;
             var quickReply2 = document.getElementById('quickReply2').value;
@@ -130,7 +130,7 @@ function sendQuickReplies(quickReplies) {
             lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
         }
 
-        if (numQuickReplies == 3) {
+        if (numQuickReplies=="3") {
             console.log("I am in IF Loop");
             var cmdName = lpTag.agentSDK.cmdNames.write;
             var quickReply1 = document.getElementById('quickReply1').value;
