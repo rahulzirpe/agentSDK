@@ -85,7 +85,7 @@ function sendQuickReplies(quickReplies) {
             //console.log(typeof quickReply1);
             
     var data = {
-      text: "Some text",
+      text: "Please select below timeslots:",
       quickReplies: {
         "type": "quickReplies",
         "itemsPerRow": 8,
@@ -135,7 +135,7 @@ function sendQuickReplies(quickReplies) {
     lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
 }
 
-        alert('Quick replies sent successfully!');
+        //alert('Quick replies sent successfully!');
     } catch (error) {
         console.error('Error sending quick replies:', error);
         alert('Error sending quick replies.');
