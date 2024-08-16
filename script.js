@@ -52,21 +52,22 @@ document.getElementById('sendButton').addEventListener('click', function () {
     if (quickReplies.length > 0) {
         sendQuickReplies(quickReplies);
     } else {
-        alert('Please enter a Conversation ID and at least one quick reply.');
+        alert('Please enter at least one quick reply.');
     }
 });
 
 function sendQuickReplies(quickReplies) {
     try {
-        // Use the lpTag.agentSDK.cmdNames.writeSC command
-        //var cmdName = lpTag.agentSDK.cmdNames.writeSC;
-
-        //lpTag.agentSDK.command(cmdName, message);
-
-        /*lpTag.agentSDK.cmdNames.writeSC({
-            payload: message,
-            conversationId: conversationId // Specifies which conversation to send the message to
-        });*/
+        const message = {
+            type: 'structured',
+            structured: {
+                type: 'quick_replies',
+                content: {
+                    text: 'Choose an option:',
+                    quick_replies: quickReplies
+                }
+            }
+        };
 
         {
     var notifyWhenDone = function(err) {
@@ -79,14 +80,15 @@ function sendQuickReplies(quickReplies) {
 
     var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
     var quickReply1 = document.getElementById('quickReply1').value;
-    console.log(quickReply1);
-    console.log(typeof quickReply1);
-    
+    var quickReply2 = document.getElementById('quickReply2').value;
+           // console.log(quickReply1);
+            //console.log(typeof quickReply1);
+            
     var data = {
-      text: "Select Time Slots:",
+      text: "Some text",
       quickReplies: {
         "type": "quickReplies",
-        "itemsPerRow": 3,
+        "itemsPerRow": 8,
         "replies": [
           {
             "type": "button",
@@ -109,13 +111,13 @@ function sendQuickReplies(quickReplies) {
           },
           {
             "type": "button",
-            "tooltip": "No!",
-            "title": "No!",
+            "tooltip": quickReply2,
+            "title": quickReply2,
             "click": {
               "actions": [
                 {
                   "type": "publishText",
-                  "text": "No!"
+                  "text": quickReply2
                 }
               ],
               "metadata": [
@@ -133,7 +135,7 @@ function sendQuickReplies(quickReplies) {
     lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
 }
 
-        //alert('Quick replies sent successfully!');
+        alert('Quick replies sent successfully!');
     } catch (error) {
         console.error('Error sending quick replies:', error);
         alert('Error sending quick replies.');
