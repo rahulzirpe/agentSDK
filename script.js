@@ -332,7 +332,7 @@ function sendQuickReplies(quickReplies) {
                                         "id": "Yes-1234"
                                     }
                                 ]
-                            3
+                            }
                         },
                         {
                             "type": "button",
