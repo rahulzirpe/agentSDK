@@ -22,6 +22,9 @@ document.getElementById('generateButton').addEventListener('click', function () 
     const quickRepliesContainer = document.getElementById('quickRepliesContainer');
     quickRepliesContainer.innerHTML = ''; // Clear previous inputs
 
+    console.log(numQuickReplies);
+    console.log(typeof numQuickReplies);
+    
     for (let i = 1; i <= numQuickReplies; i++) {
         const label = document.createElement('label');
         label.innerText = `Quick Reply ${i}:`;
@@ -72,9 +75,6 @@ function sendQuickReplies(quickReplies) {
         // var quickReply3 = document.getElementById('quickReply3').value;
         // var quickReply4 = document.getElementById('quickReply4').value;
         // var quickReply5 = document.getElementById('quickReply5').value;
-
-
-
 
         if (numQuickReplies == 2) {
             var cmdName = lpTag.agentSDK.cmdNames.write;
@@ -131,6 +131,7 @@ function sendQuickReplies(quickReplies) {
         }
 
         if (numQuickReplies == 3) {
+            console.log("I am in IF Loop");
             var cmdName = lpTag.agentSDK.cmdNames.write;
             var quickReply1 = document.getElementById('quickReply1').value;
             var quickReply2 = document.getElementById('quickReply2').value;
