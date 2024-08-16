@@ -24,7 +24,7 @@ document.getElementById('generateButton').addEventListener('click', function () 
 
     console.log(numQuickReplies);
     console.log(typeof numQuickReplies);
-    
+
     for (let i = 1; i <= numQuickReplies; i++) {
         const label = document.createElement('label');
         label.innerText = `Quick Reply ${i}:`;
@@ -69,7 +69,7 @@ function sendQuickReplies(quickReplies) {
             // or when the action terminated with an error.
         };
         const numQuickReplies = document.getElementById('numQuickReplies').value;
-        console.log("Number of Quick replies selected="+numQuickReplies);
+        console.log("Number of Quick replies selected=" + numQuickReplies);
         //var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
         // var quickReply1 = document.getElementById('quickReply1').value;
         // var quickReply2 = document.getElementById('quickReply2').value;
@@ -77,7 +77,7 @@ function sendQuickReplies(quickReplies) {
         // var quickReply4 = document.getElementById('quickReply4').value;
         // var quickReply5 = document.getElementById('quickReply5').value;
 
-        if (numQuickReplies=="2") {
+        if (numQuickReplies == "2") {
             var cmdName = lpTag.agentSDK.cmdNames.write;
             var quickReply1 = document.getElementById('quickReply1').value;
             var quickReply2 = document.getElementById('quickReply2').value;
@@ -131,7 +131,7 @@ function sendQuickReplies(quickReplies) {
             lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
         }
 
-        if (numQuickReplies=="3") {
+        if (numQuickReplies == "3") {
             console.log("I am in IF Loop");
             var cmdName = lpTag.agentSDK.cmdNames.write;
             var quickReply1 = document.getElementById('quickReply1').value;
@@ -207,10 +207,220 @@ function sendQuickReplies(quickReplies) {
             lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
         }
 
+        if (numQuickReplies == "4") {
+            var cmdName = lpTag.agentSDK.cmdNames.write;
+            var quickReply1 = document.getElementById('quickReply1').value;
+            var quickReply2 = document.getElementById('quickReply2').value;
+            var quickReply3 = document.getElementById('quickReply3').value;
+            var quickReply4 = document.getElementById('quickReply4').value;
+
+            var data = {
+                text: "Please select below timeslots:",
+                quickReplies: {
+                    "type": "quickReplies",
+                    "itemsPerRow": 3,
+                    "replies": [
+                        {
+                            "type": "button",
+                            "tooltip": quickReply1,
+                            "title": quickReply1,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply1
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "Yes-1234"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply2,
+                            "title": quickReply2,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply2
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "Yes-1232"
+                                    }
+                                ]
+                            }
+                        }2
+                        {
+                            "type": "button",
+                            "tooltip": quickReply3,
+                            "title": quickReply3,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply3
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "Yes-1233"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply4,
+                            "title": quickReply4,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply4
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "No-4324"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            };
+            lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
+        }
+
+        if (numQuickReplies == "5") {
+            var cmdName = lpTag.agentSDK.cmdNames.write;
+            var quickReply1 = document.getElementById('quickReply1').value;
+            var quickReply2 = document.getElementById('quickReply2').value;
+            var quickReply3 = document.getElementById('quickReply3').value;
+            var quickReply4 = document.getElementById('quickReply4').value;
+            var quickReply5 = document.getElementById('quickReply5').value;
+
+            var data = {
+                text: "Please select below timeslots:",
+                quickReplies: {
+                    "type": "quickReplies",
+                    "itemsPerRow": 3,
+                    "replies": [
+                        {
+                            "type": "button",
+                            "tooltip": quickReply1,
+                            "title": quickReply1,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply1
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "Yes-1234"
+                                    }
+                                ]
+                            3
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply2,
+                            "title": quickReply2,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply2
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "Yes-1232"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply3,
+                            "title": quickReply3,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply3
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "Yes-1233"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply4,
+                            "title": quickReply4,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply4
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "Yes-1234"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "tooltip": quickReply5,
+                            "title": quickReply5,
+                            "click": {
+                                "actions": [
+                                    {
+                                        "type": "publishText",
+                                        "text": quickReply5
+                                    }
+                                ],
+                                "metadata": [
+                                    {
+                                        "type": "ExternalId",
+                                        "id": "No-4325"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            };
+            lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
+        }
+
         //lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
 
 
-        alert('Quick replies sent successfully!');
+        //alert('Quick replies sent successfully!');
     } catch (error) {
         console.error('Error sending quick replies:', error);
         alert('Error sending quick replies.');
