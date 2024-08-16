@@ -38,7 +38,7 @@ document.getElementById('generateButton').addEventListener('click', function () 
 });
 
 document.getElementById('sendButton').addEventListener('click', function () {
-    const conversationId = document.getElementById('conversationId').value;
+    //const conversationId = document.getElementById('conversationId').value;
     const numQuickReplies = document.getElementById('numQuickReplies').value;
     const quickReplies = [];
 
@@ -49,26 +49,15 @@ document.getElementById('sendButton').addEventListener('click', function () {
         }
     }
 
-    if (conversationId && quickReplies.length > 0) {
-        sendQuickReplies(conversationId, quickReplies);
+    if (quickReplies.length > 0) {
+        sendQuickReplies(quickReplies);
     } else {
         alert('Please enter a Conversation ID and at least one quick reply.');
     }
 });
 
-function sendQuickReplies(conversationId, quickReplies) {
+function sendQuickReplies(quickReplies) {
     try {
-        const message = {
-            type: 'structured',
-            structured: {
-                type: 'quick_replies',
-                content: {
-                    text: 'Choose an option:',
-                    quick_replies: quickReplies
-                }
-            }
-        };
-
         // Use the lpTag.agentSDK.cmdNames.writeSC command
         //var cmdName = lpTag.agentSDK.cmdNames.writeSC;
 
