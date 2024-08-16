@@ -82,7 +82,7 @@ function sendQuickReplies(quickReplies) {
             var quickReply1 = document.getElementById('quickReply1').value;
             var quickReply2 = document.getElementById('quickReply2').value;
             var data = {
-                text: "Please select below timeslots:",
+                text: "Please select any timeslot:",
                 quickReplies: {
                     "type": "quickReplies",
                     "itemsPerRow": 3,
@@ -132,14 +132,13 @@ function sendQuickReplies(quickReplies) {
         }
 
         if (numQuickReplies == "3") {
-            console.log("I am in IF Loop");
             var cmdName = lpTag.agentSDK.cmdNames.write;
             var quickReply1 = document.getElementById('quickReply1').value;
             var quickReply2 = document.getElementById('quickReply2').value;
             var quickReply3 = document.getElementById('quickReply3').value;
 
             var data = {
-                text: "Please select below timeslots:",
+                text: "Please select any timeslot:",
                 quickReplies: {
                     "type": "quickReplies",
                     "itemsPerRow": 3,
@@ -215,7 +214,7 @@ function sendQuickReplies(quickReplies) {
             var quickReply4 = document.getElementById('quickReply4').value;
 
             var data = {
-                text: "Please select below timeslots:",
+                text: "Please select any timeslot:",
                 quickReplies: {
                     "type": "quickReplies",
                     "itemsPerRow": 3,
@@ -311,7 +310,7 @@ function sendQuickReplies(quickReplies) {
             var quickReply5 = document.getElementById('quickReply5').value;
 
             var data = {
-                text: "Please select below timeslots:",
+                text: "Please select any timeslot:",
                 quickReplies: {
                     "type": "quickReplies",
                     "itemsPerRow": 3,
