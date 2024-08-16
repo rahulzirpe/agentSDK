@@ -100,13 +100,13 @@ function sendQuickReplies(conversationId, quickReplies) {
         "replies": [
           {
             "type": "button",
-            "tooltip": "Yes",
-            "title": "Yes",
+            "tooltip": "$[quickReply1]",
+            "title": "$[quickReply1]",
             "click": {
               "actions": [
                 {
                   "type": "publishText",
-                  "text": "Yes"
+                  "text": "$[quickReply1]"
                 }
               ],
               "metadata": [
