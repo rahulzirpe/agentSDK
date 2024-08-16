@@ -70,70 +70,151 @@ function sendQuickReplies(quickReplies) {
         };
 
         {
-    var notifyWhenDone = function(err) {
-        if (err) {
-            // Do something with the error
+            var notifyWhenDone = function (err) {
+                if (err) {
+                    // Do something with the error
+                }
+                // called when the command is completed successfully,
+                // or when the action terminated with an error.
+            };
+
+            var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
+            var quickReply1 = document.getElementById('quickReply1').value;
+            var quickReply2 = document.getElementById('quickReply2').value;
+            var quickReply3 = document.getElementById('quickReply3').value;
+            var quickReply4 = document.getElementById('quickReply4').value;
+            var quickReply5 = document.getElementById('quickReply5').value;
+
+
+
+
+            if (numQuickReplies == 2) {
+                // console.log(quickReply1);
+                //console.log(typeof quickReply1);
+
+                var data = {
+                    text: "Please select below timeslots:",
+                    quickReplies: {
+                        "type": "quickReplies",
+                        "itemsPerRow": 3,
+                        "replies": [
+                            {
+                                "type": "button",
+                                "tooltip": quickReply1,
+                                "title": quickReply1,
+                                "click": {
+                                    "actions": [
+                                        {
+                                            "type": "publishText",
+                                            "text": quickReply1
+                                        }
+                                    ],
+                                    "metadata": [
+                                        {
+                                            "type": "ExternalId",
+                                            "id": "Yes-1234"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "button",
+                                "tooltip": quickReply2,
+                                "title": quickReply2,
+                                "click": {
+                                    "actions": [
+                                        {
+                                            "type": "publishText",
+                                            "text": quickReply2
+                                        }
+                                    ],
+                                    "metadata": [
+                                        {
+                                            "type": "ExternalId",
+                                            "id": "No-4321"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                };
+            }
+
+            if (numQuickReplies == 3) {
+                // console.log(quickReply1);
+                //console.log(typeof quickReply1);
+
+                var data = {
+                    text: "Please select below timeslots:",
+                    quickReplies: {
+                        "type": "quickReplies",
+                        "itemsPerRow": 3,
+                        "replies": [
+                            {
+                                "type": "button",
+                                "tooltip": quickReply1,
+                                "title": quickReply1,
+                                "click": {
+                                    "actions": [
+                                        {
+                                            "type": "publishText",
+                                            "text": quickReply1
+                                        }
+                                    ],
+                                    "metadata": [
+                                        {
+                                            "type": "ExternalId",
+                                            "id": "Yes-12345"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "button",
+                                "tooltip": quickReply2,
+                                "title": quickReply2,
+                                "click": {
+                                    "actions": [
+                                        {
+                                            "type": "publishText",
+                                            "text": quickReply2
+                                        }
+                                    ],
+                                    "metadata": [
+                                        {
+                                            "type": "ExternalId",
+                                            "id": "Yes-1234"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "button",
+                                "tooltip": quickReply3,
+                                "title": quickReply3,
+                                "click": {
+                                    "actions": [
+                                        {
+                                            "type": "publishText",
+                                            "text": quickReply3
+                                        }
+                                    ],
+                                    "metadata": [
+                                        {
+                                            "type": "ExternalId",
+                                            "id": "No-4321"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                };
+            }
+
+            lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
         }
-        // called when the command is completed successfully,
-        // or when the action terminated with an error.
-    };
-
-    var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
-    var quickReply1 = document.getElementById('quickReply1').value;
-    var quickReply2 = document.getElementById('quickReply2').value;
-           // console.log(quickReply1);
-            //console.log(typeof quickReply1);
-            
-    var data = {
-      text: "Please select below timeslots:",
-      quickReplies: {
-        "type": "quickReplies",
-        "itemsPerRow": 8,
-        "replies": [
-          {
-            "type": "button",
-            "tooltip": quickReply1,
-            "title": quickReply1,
-            "click": {
-              "actions": [
-                {
-                  "type": "publishText",
-                  "text": quickReply1
-                }
-              ],
-              "metadata": [
-                {
-                  "type": "ExternalId",
-                  "id": "Yes-1234"
-                }
-              ]
-            }
-          },
-          {
-            "type": "button",
-            "tooltip": quickReply2,
-            "title": quickReply2,
-            "click": {
-              "actions": [
-                {
-                  "type": "publishText",
-                  "text": quickReply2
-                }
-              ],
-              "metadata": [
-                {
-                  "type": "ExternalId",
-                  "id": "No-4321"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    };
-
-    lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
-}
 
         //alert('Quick replies sent successfully!');
     } catch (error) {
