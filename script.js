@@ -256,7 +256,7 @@ function sendQuickReplies(quickReplies) {
                                     }
                                 ]
                             }
-                        }2
+                        }
                         {
                             "type": "button",
                             "tooltip": quickReply3,
