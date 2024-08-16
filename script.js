@@ -68,7 +68,7 @@ function sendQuickReplies(quickReplies) {
             // called when the command is completed successfully,
             // or when the action terminated with an error.
         };
-
+        const numQuickReplies = document.getElementById('numQuickReplies').value;
         console.log("Number of Quick replies selected="+numQuickReplies);
         //var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
         // var quickReply1 = document.getElementById('quickReply1').value;
