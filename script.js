@@ -66,7 +66,7 @@ function sendQuickReplies(quickReplies) {
             // or when the action terminated with an error.
         };
 
-        var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
+        //var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
         // var quickReply1 = document.getElementById('quickReply1').value;
         // var quickReply2 = document.getElementById('quickReply2').value;
         // var quickReply3 = document.getElementById('quickReply3').value;
@@ -77,6 +77,7 @@ function sendQuickReplies(quickReplies) {
 
 
         if (numQuickReplies == 2) {
+            var cmdName = lpTag.agentSDK.cmdNames.write;
             var quickReply1 = document.getElementById('quickReply1').value;
             var quickReply2 = document.getElementById('quickReply2').value;
             var data = {
@@ -126,9 +127,11 @@ function sendQuickReplies(quickReplies) {
                     ]
                 }
             };
+            lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
         }
 
         if (numQuickReplies == 3) {
+            var cmdName = lpTag.agentSDK.cmdNames.write;
             var quickReply1 = document.getElementById('quickReply1').value;
             var quickReply2 = document.getElementById('quickReply2').value;
             var quickReply3 = document.getElementById('quickReply3').value;
@@ -199,9 +202,10 @@ function sendQuickReplies(quickReplies) {
                     ]
                 }
             };
+            lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
         }
 
-        lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
+        //lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
 
 
         alert('Quick replies sent successfully!');
